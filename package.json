@@ -4,6 +4,6 @@
   "private": true,
   "description": "Future Summit local website",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node js/server.js"
   }
 }
