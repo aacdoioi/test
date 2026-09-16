@@ -1,0 +1,9 @@
+{
+  "name": "future-summit-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Future Summit local website",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
