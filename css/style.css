@@ -92,6 +92,10 @@ h1, h2, h3, p {
 .page-intro {
     margin-bottom: 28px;
 }
+.page-intro button {
+    border: none;
+    background-color: #1f5eff;
+}
 .page-intro .admin-button {
     padding: 6px 12px;
     font-size: 14px;
