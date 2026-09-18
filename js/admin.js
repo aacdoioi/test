@@ -4,6 +4,12 @@ const getApiUrl = () => {
     return isInPagesFolder ? '../api/tournaments' : './api/tournaments';
 };
 
+const getApplicationsApiUrl = () => {
+    const { pathname } = window.location;
+    const isInPagesFolder = pathname.includes('/pages/');
+    return isInPagesFolder ? '../api/applications' : './api/applications';
+};
+
 const showAdminMessage = (message, isError = false) => {
     const element = document.getElementById('admin-message');
     if (!element) return;
@@ -54,6 +60,26 @@ const renderAdminList = (items) => {
     `).join('');
 };
 
+const renderApplicationList = (items) => {
+    const container = document.getElementById('admin-application-list');
+    if (!container) return;
+
+    if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = '<p>まだ申請はありません。</p>';
+        return;
+    }
+
+    container.innerHTML = items.map((item) => `
+        <div class="info-card" style="margin-bottom: 12px;">
+            <h3 style="margin-bottom: 8px;">${item.player_name || '未設定'} / ${item.discord_id || 'Discord未設定'}</h3>
+            <p><strong>大会ID:</strong> ${item.tournament_id || '未設定'}</p>
+            <p><strong>ゲームUID:</strong> ${item.game_uid || '未設定'}</p>
+            <p><strong>状態:</strong> ${item.status || 'pending'}</p>
+            <p><strong>備考:</strong> ${item.notes ? item.notes : 'なし'}</p>
+        </div>
+    `).join('');
+};
+
 const loadTournaments = async () => {
     try {
         const response = await fetch(getApiUrl(), {
@@ -77,11 +103,35 @@ const loadTournaments = async () => {
     }
 };
 
+const loadApplications = async () => {
+    try {
+        const response = await fetch(getApplicationsApiUrl(), {
+            headers: {
+                Accept: 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`申請一覧取得に失敗しました: ${response.status}`);
+        }
+
+        const data = await response.json();
+        renderApplicationList(Array.isArray(data) ? data : []);
+    } catch (error) {
+        console.error(error);
+        const container = document.getElementById('admin-application-list');
+        if (container) {
+            container.innerHTML = '<p>申請一覧を取得できませんでした。</p>';
+        }
+    }
+};
+
 const initAdminPage = () => {
     const form = document.getElementById('admin-form');
     if (!form) return;
 
     loadTournaments();
+    loadApplications();
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
