@@ -97,9 +97,7 @@ h1, h2, h3, p {
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background-color: #000;
-    border-radius: 8px;
-    text-decoration: none;
+    border: none;
     transition: background-color 0.2s ease;
 }
 
