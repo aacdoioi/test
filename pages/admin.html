@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ページ | Tournament Hub</title>
+    <meta name="description" content="大会情報の追加と管理を行う管理画面です。">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div>
+                <p class="eyebrow">Tournament Hub</p>
+                <h1>管理者ページ</h1>
+            </div>
+            <nav class="top-nav" aria-label="メインナビゲーション">
+                <a href="../index.html">大会一覧</a>
+                <a href="./admin.html" class="is-active">管理者ページ</a>
+                <a href="./apply.html">参加申請</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="page-intro">
+            <p class="section-label">Admin</p>
+            <h2>大会情報管理</h2>
+            <p>大会追加・編集・削除の基本操作を行います。認証機能は後続フェーズで実装します。</p>
+        </section>
+
+        <section class="detail-layout">
+            <form id="admin-form" class="detail-hero" novalidate>
+                <div class="detail-hero__content">
+                    <h3>大会追加</h3>
+
+                    <div class="detail-grid">
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="admin-title" style="display: block; margin-bottom: 8px; font-weight: 700;">大会名</label>
+                            <input id="admin-title" name="title" type="text" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="admin-description" style="display: block; margin-bottom: 8px; font-weight: 700;">概要</label>
+                            <textarea id="admin-description" name="description" rows="4" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box; resize: vertical;"></textarea>
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-start" style="display: block; margin-bottom: 8px; font-weight: 700;">開催日時</label>
+                            <input id="admin-start" name="start_at" type="datetime-local" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-deadline" style="display: block; margin-bottom: 8px; font-weight: 700;">申請期限</label>
+                            <input id="admin-deadline" name="deadline" type="datetime-local" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-status" style="display: block; margin-bottom: 8px; font-weight: 700;">開催状況</label>
+                            <select id="admin-status" name="status" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                                <option value="募集中">募集中</option>
+                                <option value="参加受付中">参加受付中</option>
+                                <option value="準備中">準備中</option>
+                                <option value="終了">終了</option>
+                            </select>
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-venue" style="display: block; margin-bottom: 8px; font-weight: 700;">開催場所</label>
+                            <input id="admin-venue" name="venue" type="text" value="未定" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-entry-fee" style="display: block; margin-bottom: 8px; font-weight: 700;">参加費</label>
+                            <input id="admin-entry-fee" name="entry_fee" type="text" value="無料" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-capacity" style="display: block; margin-bottom: 8px; font-weight: 700;">定員</label>
+                            <input id="admin-capacity" name="capacity" type="number" min="1" value="16" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card">
+                            <label for="admin-organizer" style="display: block; margin-bottom: 8px; font-weight: 700;">主催</label>
+                            <input id="admin-organizer" name="organizer" type="text" value="運営チーム" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="admin-rules" style="display: block; margin-bottom: 8px; font-weight: 700;">ルール</label>
+                            <textarea id="admin-rules" name="rules" rows="3" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box; resize: vertical;"></textarea>
+                        </div>
+
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="admin-thumbnail" style="display: block; margin-bottom: 8px; font-weight: 700;">画像URL</label>
+                            <input id="admin-thumbnail" name="thumbnail" type="url" placeholder="https://example.com/image.jpg" style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+                    </div>
+
+                    <div id="admin-message" aria-live="polite" style="margin-top: 18px; min-height: 24px; color: var(--muted); font-weight: 600;"></div>
+
+                    <div class="card-actions" style="margin-top: 24px;">
+                        <button type="reset" class="secondary-button">リセット</button>
+                        <button type="submit" class="primary-button">大会を追加</button>
+                    </div>
+                </div>
+            </form>
+
+            <section class="detail-hero">
+                <div class="detail-hero__content">
+                    <h3>大会一覧</h3>
+                    <div id="admin-tournament-list" class="meta-list" style="margin-top: 16px;"></div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

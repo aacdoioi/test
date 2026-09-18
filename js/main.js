@@ -1,3 +1,16 @@
+const bindSpecialNavigation = () => {
+    document.addEventListener('click', (event) => {
+        const button = event.target.closest('.special-navigation');
+        if (!button) {
+            return;
+        }
+
+        const destination = button.dataset.normalUrl || button.dataset.normalURL || button.getAttribute('data-normal-url') || './index.html';
+        event.preventDefault();
+        window.location.href = destination;
+    });
+};
+
 const getDataUrl = () => {
     const { pathname } = window.location;
     const isInPagesFolder = pathname.includes('/pages/');
@@ -102,4 +115,8 @@ const initTournamentList = async () => {
     }
 };
 
-window.addEventListener('DOMContentLoaded', initTournamentList);
+document.addEventListener('DOMContentLoaded', () => {
+    bindSpecialNavigation();
+    initTournamentList();
+});
+

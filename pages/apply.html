@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参加申請 | Tournament Hub</title>
+    <meta name="description" content="大会参加申請フォームです。">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div>
+                <p class="eyebrow">Tournament Hub</p>
+                <h1>参加申請</h1>
+            </div>
+            <nav class="top-nav" aria-label="メインナビゲーション">
+                <a href="../index.html">大会一覧</a>
+                <a href="./admin.html">管理者ページ</a>
+                <a href="./apply.html" class="is-active">参加申請</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="page-intro">
+            <p class="section-label">Application</p>
+            <h2>大会参加申請</h2>
+            <p>参加を希望する大会の申請内容をご入力ください。</p>
+        </section>
+
+        <section class="detail-layout">
+            <form id="application-form" class="detail-hero" novalidate>
+                <div class="detail-hero__content">
+                    <div class="info-card" style="margin-bottom: 18px;">
+                        <h3>対象大会</h3>
+                        <p id="selected-tournament">大会情報を読み込み中です...</p>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="player-name" style="display: block; margin-bottom: 8px; font-weight: 700;">現在のゲーム名（ネットの名前）</label>
+                            <input id="player-name" name="playerName" type="text" maxlength="50" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="discord-id" style="display: block; margin-bottom: 8px; font-weight: 700;">Discord ID（呼び出しのため）</label>
+                            <input id="discord-id" name="discordId" type="text" maxlength="80" placeholder="example#1234" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+
+                        <div class="info-card" style="grid-column: 1 / -1;">
+                            <label for="game-uid" style="display: block; margin-bottom: 8px; font-weight: 700;">ゲームUID</label>
+                            <input id="game-uid" name="gameUid" type="text" maxlength="80" required style="width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; font: inherit; box-sizing: border-box;">
+                        </div>
+                    </div>
+
+                    <div id="form-message" aria-live="polite" style="margin-top: 18px; min-height: 24px; color: var(--muted); font-weight: 600;"></div>
+
+                    <div class="card-actions" style="margin-top: 24px;">
+                        <button type="button" class="secondary-button special-navigation" data-normal-url="../index.html" data-admin-url="./admin.html">戻る</button>
+                        <button id="submit-button" type="submit" class="primary-button">申請する</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/apply.js"></script>
+</body>
+</html>

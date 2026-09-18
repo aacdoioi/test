@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS tournaments (
+  id TEXT PRIMARY KEY,
+  title TEXT NOT NULL,
+  description TEXT,
+  start_at TEXT NOT NULL,
+  deadline TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT '募集中',
+  venue TEXT,
+  entry_fee TEXT,
+  capacity INTEGER,
+  organizer TEXT,
+  rules TEXT,
+  thumbnail TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS applications (
+  id TEXT PRIMARY KEY,
+  tournament_id TEXT NOT NULL,
+  player_name TEXT NOT NULL,
+  discord_id TEXT NOT NULL,
+  game_uid TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'pending',
+  notes TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (tournament_id) REFERENCES tournaments(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_tournaments_start_at ON tournaments(start_at);
+CREATE INDEX IF NOT EXISTS idx_applications_tournament_id ON applications(tournament_id);
+CREATE INDEX IF NOT EXISTS idx_applications_status ON applications(status);

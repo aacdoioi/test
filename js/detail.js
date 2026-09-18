@@ -1,10 +1,10 @@
-const getDataUrl = () => {
+const detailGetDataUrl = () => {
     const { pathname } = window.location;
     const isInPagesFolder = pathname.includes('/pages/');
     return isInPagesFolder ? '../data/tournaments.json' : './data/tournaments.json';
 };
 
-const escapeHtml = (value) => {
+const detailEscapeHtml = (value) => {
     if (value === null || value === undefined) {
         return '';
     }
@@ -17,7 +17,7 @@ const escapeHtml = (value) => {
         .replace(/'/g, '&#039;');
 };
 
-const formatDate = (dateString) => {
+const detailFormatDate = (dateString) => {
     if (!dateString) return '未定';
     const date = new Date(dateString);
     if (Number.isNaN(date.getTime())) {
@@ -53,45 +53,45 @@ const renderDetail = (tournament) => {
     container.innerHTML = `
         <article class="detail-hero">
             <div class="detail-hero__image">
-                <img src="${escapeHtml(tournament.thumbnail || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80')}" alt="${escapeHtml(tournament.title)}">
+                <img src="${detailEscapeHtml(tournament.thumbnail || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80')}" alt="${detailEscapeHtml(tournament.title)}">
             </div>
             <div class="detail-hero__content">
-                <span class="badge">${escapeHtml(tournament.status || '未設定')}</span>
-                <h2>${escapeHtml(tournament.title)}</h2>
-                <p class="detail-description">${escapeHtml(tournament.description || '詳細はまだ登録されていません。')}</p>
+                <span class="badge">${detailEscapeHtml(tournament.status || '未設定')}</span>
+                <h2>${detailEscapeHtml(tournament.title)}</h2>
+                <p class="detail-description">${detailEscapeHtml(tournament.description || '詳細はまだ登録されていません。')}</p>
                 <div class="card-actions">
                     <a class="primary-button" href="./apply.html?id=${encodeURIComponent(tournament.id)}">この大会に参加申請</a>
-                    <a class="secondary-button" href="../index.html">一覧へ戻る</a>
+                    <button type="button" class="secondary-button special-navigation" data-normal-url="../index.html" data-admin-url="./admin.html">一覧へ戻る</button>
                 </div>
 
                 <div class="detail-grid">
                     <div class="info-card">
                         <h3>開催日時</h3>
-                        <p>${escapeHtml(formatDate(tournament.startAt))}</p>
+                        <p>${detailEscapeHtml(detailFormatDate(tournament.startAt))}</p>
                     </div>
                     <div class="info-card">
                         <h3>申請期限</h3>
-                        <p>${escapeHtml(formatDate(tournament.deadline))}</p>
+                        <p>${detailEscapeHtml(detailFormatDate(tournament.deadline))}</p>
                     </div>
                     <div class="info-card">
                         <h3>開催場所</h3>
-                        <p>${escapeHtml(tournament.venue || '未定')}</p>
+                        <p>${detailEscapeHtml(tournament.venue || '未定')}</p>
                     </div>
                     <div class="info-card">
                         <h3>参加費</h3>
-                        <p>${escapeHtml(tournament.entryFee || '未定')}</p>
+                        <p>${detailEscapeHtml(tournament.entryFee || '未定')}</p>
                     </div>
                     <div class="info-card">
                         <h3>定員</h3>
-                        <p>${escapeHtml(tournament.capacity ? `${tournament.capacity}名` : '未定')}</p>
+                        <p>${detailEscapeHtml(tournament.capacity ? `${tournament.capacity}名` : '未定')}</p>
                     </div>
                     <div class="info-card">
                         <h3>主催</h3>
-                        <p>${escapeHtml(tournament.organizer || '運営チーム')}</p>
+                        <p>${detailEscapeHtml(tournament.organizer || '運営チーム')}</p>
                     </div>
                     <div class="info-card">
                         <h3>ルール</h3>
-                        <p>${escapeHtml(tournament.rules || 'ルール詳細は未定です。')}</p>
+                        <p>${detailEscapeHtml(tournament.rules || 'ルール詳細は未定です。')}</p>
                     </div>
                 </div>
             </div>
@@ -104,7 +104,7 @@ const initTournamentDetail = async () => {
     const tournamentId = params.get('id');
 
     try {
-        const response = await fetch(getDataUrl(), {
+        const response = await fetch(detailGetDataUrl(), {
             headers: {
                 Accept: 'application/json'
             }
