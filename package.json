@@ -1,9 +1,19 @@
 {
-  "name": "future-summit-site",
+  "name": "test",
   "version": "1.0.0",
-  "private": true,
-  "description": "Future Summit local website",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "node js/server.js"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aacdoioi/test.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aacdoioi/test/issues"
+  },
+  "homepage": "https://github.com/aacdoioi/test#readme"
 }
