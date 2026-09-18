@@ -92,6 +92,17 @@ h1, h2, h3, p {
 .page-intro {
     margin-bottom: 28px;
 }
+.page-intro .admin-button {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #000;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
 
 .section-label {
     margin-bottom: 10px;
