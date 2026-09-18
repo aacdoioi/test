@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "wrangler pages dev ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/aacdoioi/test/issues"
   },
-  "homepage": "https://github.com/aacdoioi/test#readme"
+  "homepage": "https://github.com/aacdoioi/test#readme",
+  "devDependencies": {
+    "wrangler": "^4.134.0"
+  }
 }
