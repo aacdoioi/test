@@ -92,17 +92,27 @@ h1, h2, h3, p {
 .page-intro {
     margin-bottom: 28px;
 }
+
 .page-intro button {
     border: none;
-    background-color: #1f5eff;
+    background-color: #eef4ff;
 }
+
 .page-intro .admin-button {
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-top: 8px;
     border: none;
-    transition: background-color 0.2s ease;
+    border-radius: 3px;
+    background-color: #eef4ff;
+    opacity: 0.3;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.page-intro .admin-button:hover {
+    opacity: 0.7;
 }
 
 .section-label {
@@ -116,7 +126,7 @@ h1, h2, h3, p {
 
 .page-intro h2 {
     font-size: clamp(2rem, 5vw, 2.8rem);
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .page-intro p:last-child {
