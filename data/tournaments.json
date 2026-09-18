@@ -1,0 +1,44 @@
+[
+  {
+    "id": "spring-2026-open",
+    "title": "Spring 2026 Open",
+    "description": "地域のゲーム仲間が集まる春の大会。予選を勝ち抜いて決勝に進み、上位入賞者には景品を用意します。",
+    "startAt": "2026-04-18T18:30:00+09:00",
+    "deadline": "2026-04-05T23:59:59+09:00",
+    "status": "募集中",
+    "venue": "オンライン対戦室 / Discord",
+    "entryFee": "無料",
+    "capacity": 32,
+    "organizer": "運営チームA",
+    "rules": "3本先取 / 5分制限 / 反則時は失格判定",
+    "thumbnail": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "summer-showdown",
+    "title": "Summer Showdown",
+    "description": "夏休み期間中に開催する大型対戦イベント。予選ラウンドと決勝トーナメントを通じて優勝を争います。",
+    "startAt": "2026-07-12T17:00:00+09:00",
+    "deadline": "2026-06-30T23:59:59+09:00",
+    "status": "参加受付中",
+    "venue": "都内イベント会場",
+    "entryFee": "1,000円",
+    "capacity": 16,
+    "organizer": "運営チームB",
+    "rules": "シングルエリミネーション / 1試合 10分 / 事前調整必須",
+    "thumbnail": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "weekend-cup",
+    "title": "Weekend Cup",
+    "description": "土日を使って気軽に参加できる短期大会。予選は比較的短時間で進行し、体験参加もしやすい構成です。",
+    "startAt": "2026-09-05T13:00:00+09:00",
+    "deadline": "2026-08-31T23:59:59+09:00",
+    "status": "準備中",
+    "venue": "会場未定（発表予定）",
+    "entryFee": "無料",
+    "capacity": 24,
+    "organizer": "運営チームC",
+    "rules": "グループ戦＋決勝 / 5分制限 / 途中参加可",
+    "thumbnail": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80"
+  }
+]

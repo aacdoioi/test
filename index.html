@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>大会一覧 | Tournament Hub</title>
+    <meta name="description" content="ゲーム大会の一覧と詳細を確認できるサイトです。">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <p>Hello World</p>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div>
+                <p class="eyebrow">Tournament Hub</p>
+                <h1>大会一覧</h1>
+            </div>
+            <nav class="top-nav" aria-label="メインナビゲーション">
+                <a href="./index.html" class="is-active">大会一覧</a>
+                <a href="./pages/admin.html">管理者ページ</a>
+                <a href="./pages/apply.html">参加申請</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <section class="page-intro">
+            <p class="section-label">Upcoming events</p>
+            <h2>開催予定の大会</h2>
+            <p>気になる大会を選んで、詳細を確認して参加申請を進めてください。</p>
+        </section>
+
+        <section>
+            <div id="tournament-list" class="card-list" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="./js/main.js"></script>
 </body>
 </html>
