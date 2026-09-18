@@ -1,23 +1,8 @@
 {
-  "name": "test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "wrangler pages dev ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aacdoioi/test.git"
-  },
-  "keywords": [],
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/aacdoioi/test/issues"
-  },
-  "homepage": "https://github.com/aacdoioi/test#readme",
   "devDependencies": {
     "wrangler": "^4.134.0"
+  },
+  "scripts": {
+    "dev": "wrangler pages dev ."
   }
 }
