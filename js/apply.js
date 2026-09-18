@@ -1,5 +1,11 @@
 const getTournamentIdFromUrl = () => new URLSearchParams(window.location.search).get('id');
 
+const getApplicationApiUrl = () => {
+    const { pathname } = window.location;
+    const isInPagesFolder = pathname.includes('/pages/');
+    return isInPagesFolder ? '../api/applications' : './api/applications';
+};
+
 const showMessage = (message, isError = false) => {
     const element = document.getElementById('form-message');
     if (!element) return;
@@ -34,6 +40,13 @@ const validateField = (value, fieldName) => {
     return '';
 };
 
+const redirectToDetailPage = (tournamentId) => {
+    if (!tournamentId) return;
+
+    const detailUrl = `./detail.html?id=${encodeURIComponent(tournamentId)}`;
+    window.location.assign(detailUrl);
+};
+
 const initApplicationForm = () => {
     const form = document.getElementById('application-form');
     if (!form) {
@@ -42,9 +55,10 @@ const initApplicationForm = () => {
 
     setSelectedTournament();
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
+        const tournamentId = getTournamentIdFromUrl();
         const playerName = form.querySelector('#player-name').value;
         const discordId = form.querySelector('#discord-id').value;
         const gameUid = form.querySelector('#game-uid').value;
@@ -60,11 +74,43 @@ const initApplicationForm = () => {
             return;
         }
 
+        if (!tournamentId) {
+            showMessage('大会IDが指定されていません。一覧から選択してください。', true);
+            return;
+        }
+
         const button = form.querySelector('#submit-button');
         button.disabled = true;
         button.textContent = '送信中...';
 
-        showMessage('申請内容を受け付けました。管理者確認後に連絡します。');
+        try {
+            const response = await fetch(getApplicationApiUrl(), {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                    tournament_id: tournamentId,
+                    player_name: playerName,
+                    discord_id: discordId,
+                    game_uid: gameUid
+                })
+            });
+
+            const result = await response.json().catch(() => ({}));
+
+            if (!response.ok) {
+                throw new Error(result.error || '申請の保存に失敗しました。');
+            }
+
+            redirectToDetailPage(tournamentId);
+        } catch (error) {
+            console.error(error);
+            button.disabled = false;
+            button.textContent = '申請する';
+            showMessage(error.message || '申請の保存に失敗しました。', true);
+        }
     });
 };
 
